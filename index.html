@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 1 Month Anniversary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #3d3d3d;
+      position: relative;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #8ec5fc;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    button {
+      background-color: #6a11cb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+      animation: pulse 1.5s infinite;
+      transition: background-color 0.3s ease;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .message {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.2rem;
+      max-width: 90%;
+      line-height: 1.6;
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 1.2s ease-in forwards, bounce 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #a18cd1;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #a18cd1;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/08/01/audio_43e1ce5ae0.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>  <h1>Happy 1 Month Anniversary, My Love Aashna ❤️✨</h1>
+  <button onclick="nextClick()" id="revealBtn">🎁 Ready for a Surprise?</button>
+  <div class="message" id="message">
+    <p>🌸 <strong>My Dearest Aashna</strong>,<br><br>
+    One month of us — and it already feels like a lifetime of love wrapped in just 30 days. 💑<br>
+    In your smile, I’ve found peace… in your eyes, my world… and in your heart, my home. 🏡❤️<br><br>
+    I know things haven’t been easy lately. Your parents found out about us, and you faced anger, your phone was taken, and even pain. 💔 But despite everything, you chose me. You created a way — a fake account — just to keep our connection alive. 🥺 You stood up to everything and still chose to fight for our love. 🛡️💕<br><br>
+    You’re not just my girlfriend… you’re the calm in my chaos, the rhythm to my silence, the meaning behind my every little smile. 💖 You’re my strength and my sunshine in the darkest days. ☀️<br><br>
+    Every moment with you feels like magic — not because it’s perfect, but because <em>you’re in it.</em> ✨<br><br>
+    This is just the beginning of our story… and I swear, the rest of it will be even more beautiful. 📖❤️<br>
+    I promise to grow with you, laugh with you, and love you — endlessly. ♾️<br><br>
+    I can’t wait to write the next chapter — hand in hand, heart to heart. 🤝❤️‍🔥<br>
+    </p>
+  </div>
+  <div class="hearts" id="hearts"></div>  <script>
+    let clickCount = 0;
+    function nextClick() {
+      const btn = document.getElementById('revealBtn');
+      clickCount++;
+      if (clickCount === 1) {
+        btn.innerText = "💌 Are You Sure? 😚";
+      } else if (clickCount === 2) {
+        btn.innerText = "😳 Last Chance to Back Out! 😜";
+      } else {
+        document.getElementById('message').style.display = 'block';
+        btn.style.display = 'none';
+      }
+    }
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '100vh';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.getElementById('hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 200);
+  </script></body>
+</html>
